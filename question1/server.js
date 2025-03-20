@@ -20,13 +20,16 @@ async function fetchval(type){
             throw new Error("Invalid type");
         }
         const data = await response.json();
-        return data;
+        return data.numbers;
 
     }
     catch (error){
         console.log(error)
     }
 }
+app1.get("/", (req, res) => {
+    res.send("Server is running");
+});
 
 app1.get("/numbers/:type", async (req, res) => {
     const type= req.params.type;
